@@ -26,11 +26,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+gem 'pg'
+gem 'rails_12factor'
 end
 
 group :development, :test do
-	gem 'sqlite3'
+gem 'sqlite3'
 end
 
