@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @link.title %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @link.url %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @link.comment %>
+</p>
+
+<p>
+  <strong>Time created:</strong>
+  <%= @link.time_created %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @link.expiration_date %>
+</p>
+
+<p>
+  <strong>Hx votes:</strong>
+  <%= @link.hx_votes %>
+</p>
+
+<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Back', links_path %>

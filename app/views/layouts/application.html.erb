@@ -1,25 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RedditToo</title>
+  <title>jivr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
+
 <body>
+
 	<% flash.each do |name, msg| %>
 	<%= content_tag(:div, msg, class:'alert alert-#{name}') %>
 	<% end %>
 
-	<% if user_signed_in? %>
-	<%= link_to 'signout', destroy_user_session_path, method: 'delete' %>
-	<% else %>
-	<%= link_to 'sign-in', new_user_session_path %>
-	<%= link_to 'sign-up', new_user_registration_path %>
-	<% end %>
+	<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">
+          <span id='logo'>
+          <%= link_to 'JiVR', root_path %>
+          </span>
+        </div>
+      </div>
 
-<%= yield %>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li>
+            <!--
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+             <button type="submit" class="btn btn-default">
+              Submit
+            </button>
+           </form>-->
+          </li>
+          <li>
+            <%= link_to 'submit new link', new_link_path %>
+          </li>
 
-</body>
+          <% if user_signed_in? %>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  account <span class="caret"></span>
+                </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li><%= link_to 'sign-out', destroy_user_session_path, method: 'delete' %></li>
+          <% else %>
+            <li><%= link_to 'login', new_user_session_path %></li>
+            <li><%= link_to 'sign-up', new_user_registration_path %></li>
+          <% end %></li>
+
+
+         
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <%= yield %>
+
+  </body>
 </html>

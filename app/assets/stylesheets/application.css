@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+.nav {
+	font-size: 0.75em;
+}
+
+.navbar-brand {
+	letter-spacing: 40%;
+	font-weight: bolder;
+	font-size: 2em;
+}
+

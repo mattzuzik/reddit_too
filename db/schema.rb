@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022015022) do
+ActiveRecord::Schema.define(version: 20141023002630) do
+
+  create_table "links", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "comment"
+    t.datetime "time_created"
+    t.time     "expiration_date"
+    t.integer  "hx_votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
