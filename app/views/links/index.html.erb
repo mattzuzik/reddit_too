@@ -12,20 +12,22 @@
   <br><br>
   
   <div class='panel-content'>
-    <h5><%= link_to link.comment, link.url %></h5>
+    <h5><%= link_to link.comment, link %></h5>
   </div>
     
   <div class='container'>
     <h6><%= link.title %></h6>
-    <%= link_to link.url %><br>
+    <%= link_to link.url, link.url %><br>
     <%= link.time_created %>
     <br>
     <div>Deadline: <%= link.expiration_date %></div>
     <div class='pull-right'>total historical votes: <%= link.hx_votes %></div><br>
 
     <div class='panel-footer'>
+      <% if link.user == current_user %>
     <%= link_to 'Edit', edit_link_path(link) %>
     <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     </div>
 
   </div>

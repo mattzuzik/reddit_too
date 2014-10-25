@@ -1,6 +1,9 @@
 class LinksController < ApplicationController
   respond_to :html, :xml, :json
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
 
   def index
     @links = Link.all
@@ -12,7 +15,7 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = Link.new
+    @link = current_user.links.build
     respond_with(@link)
   end
 
@@ -20,7 +23,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.build(link_params)
     @link.save
     respond_with(@link)
   end
@@ -36,6 +39,12 @@ class LinksController < ApplicationController
   end
 
   private
+
+    def correct_user 
+      @link = current_user.links.find_by(id: params[:id])
+      redirect_to links_path, notice: 'nope- not authorized' if @link.nil?
+    end
+
     def set_link
       @link = Link.find(params[:id])
     end
