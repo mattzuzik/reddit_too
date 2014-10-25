@@ -22,6 +22,3 @@ module RedditToo
     config.assets.initialize_on_precompile = false
   end
 end
-require 'jquery/modal/rails'
-require 'jquery/modal/filters'
-require 'jquery/modal/helpers'
