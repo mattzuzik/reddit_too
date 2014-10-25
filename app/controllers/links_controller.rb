@@ -5,6 +5,9 @@ class LinksController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
 
+
+
+
   def index
     @links = Link.all
     respond_with(@links)
@@ -50,6 +53,6 @@ class LinksController < ApplicationController
     end
 
     def link_params
-      params.require(:link).permit(:title, :url, :comment, :time_created, :expiration_date, :hx_votes)
+      params.require(:link).permit(:title, :url, :comment, :time_created, :expiration_date, :hx_votes, :image)
     end
 end
