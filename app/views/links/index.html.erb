@@ -2,38 +2,39 @@
   <h4>happening now...</h4>
 </div>
 
-<div class='comment panel panel-default'>
+<div class='panel-default'>
   
   <% @links.each do |link| %>
-  
-  <div class='panel-header pull-right'>
-    <h3>votes in past hr: <%= link.hx_votes %></h3>
-  </div>
-  <br><br>
-  
-  <div class='panel-content pull-right'>
-    <h5><%= link_to link.comment, link %></h5>
-  </div>
     
-  <div class='container'>
+  <div class='container shell'>
+    
+    <div class='panel-footer pull-right'>
+      <h3>votes in past hr: <%= link.hx_votes %></h3>
+    </div>
+    
+    <div>
+      <h5><%= link_to link.comment, link %></h5>
+    </div>
+    
     <h6><%= link.title %></h6>
     <%= image_tag link.image.url %>
-    <%= link_to link.url, link.url %><br>
+    <%= link.url %><br>
     <%= link.time_created %>
     <br>
+
     <div>Deadline: <%= link.expiration_date %></div>
     <div class='pull-right'>total historical votes: <%= link.hx_votes %></div><br>
 
-    <div class='panel-footer'>
+    <div class='panel-content'>
       <% if link.user == current_user %>
-    <%= link_to 'Edit', edit_link_path(link) %>
-    <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
+      <%= link_to 'Edit', edit_link_path(link) %>
+      <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   </div>
   <% end %>
+  
 </div>
-
 
 
 

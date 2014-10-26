@@ -24,15 +24,16 @@
 	letter-spacing: -.1em;
 }
 
-.comment {
-	background-color: #ecf0f1;
-	margin: 1%;
-	padding: 1%;
-	border-radius: 25px;
-}
 
 .greeting {
 	margin: 1%;
 	padding-bottom: 5px;
+}
+
+#homeimage {
+	width: 25%;	
+	float: right;
+	border-radius: 10%;
+	margin-right: 10%;
 }
 
